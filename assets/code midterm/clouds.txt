@@ -1,0 +1,32 @@
+//Clouds Textures 1
+loader.load('assets/models/clouds/scene.gltf', function(gltf){
+   scene.add(gltf.scene);
+   gltf.scene.scale.set(0.1, 0.1, 0.1);
+   gltf.scene.position.x = 40;
+   gltf.scene.position.y = 75;
+   gltf.scene.position.z -= 65;
+}, undefined, function ( error ) {
+   console.error( error );
+} );
+
+//Clouds Textures 2
+loader.load('assets/models/clouds/scene.gltf', function(gltf){
+   scene.add(gltf.scene);
+   gltf.scene.scale.set(0.1, 0.1, 0.1);
+   gltf.scene.position.y = 50;
+   gltf.scene.position.x -= 100;
+   gltf.scene.position.z -= 30;
+}, undefined, function ( error ) {
+   console.error( error );
+} );
+
+//Clouds Textures 3
+loader.load('assets/models/clouds/scene.gltf', function(gltf){
+   scene.add(gltf.scene);
+   gltf.scene.scale.set(0.1, 0.1, 0.1);
+   gltf.scene.position.y = 55;
+   gltf.scene.position.x = 75;
+   gltf.scene.position.z = 95;
+}, undefined, function ( error ) {
+   console.error( error );
+} );
