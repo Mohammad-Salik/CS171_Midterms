@@ -84,8 +84,10 @@ function animate(){
 function validatePlane(){
    if (firstPlane.position.z < -400){
       firstPlane.position.z = 400;
+      firstPlane.position.x = Math.random()*800;
    }else if (secondPlane.position.x < -400){
       secondPlane.position.x = 400;
+      secondPlane.position.z = Math.random()*800;
    }
 }
 
