@@ -165,7 +165,7 @@ function loadModels(){
    let materialRing = new THREE.MeshLambertMaterial( { map: textureRing, transparent: true } );
    materialRing.opacity = 0.3;
    let sprite = new THREE.TextureLoader().load('assets/textures/stone_floor.jpg');
-   let ringMaterial = new THREE.PointsMaterial({color: 0xafc3cc,size: 2, map: sprite});
+   let ringMaterial = new THREE.PointsMaterial({color: 0xafc3cc,size: 5, map: sprite});
    let ship = new THREE.TextureLoader().load('assets/textures/spaceship.png');
    let shipMaterial = new THREE.PointsMaterial({color: 0xafc3cc,size: 40, map: ship});
    let textureStage = new THREE.TextureLoader().load( 'assets/textures/floor.jpg' );
@@ -186,8 +186,8 @@ function loadModels(){
    rotationCounter = 0.001;
    for (let i = 0; i < 100; i++) {
          star = new THREE.Vector3(
-         Math.sin(rotationCounter) * 30,
-         Math.cos(rotationCounter) * 30,
+         Math.sin(rotationCounter) * 40,
+         Math.cos(rotationCounter) * 40,
          Math.random()* 3
       );
          ringGeometry2.vertices.push(star);
@@ -228,11 +228,7 @@ function loadModels(){
    meshRing.position.set(0, 6, 0);
 
    scene.add(debris, debris2, meshStage, meshRing, planes);
-
-
 }
-
-
 
 //debugging
 function getMe(){
@@ -253,26 +249,27 @@ function loadBackground(){
    scene.add(CloudsBox);
    CloudsBox.position.y = 200;
 }
+
 // load lights
 function loadLights(){
-   ambientLight = new THREE.AmbientLight(0x404040, 2);
+   ambientLight = new THREE.AmbientLight(0x404040, 0.6);
    scene.add(ambientLight);
 
    spotLight = new THREE.SpotLight( 0xFFA500 , 2);
-   spotLight.target.position.set( 0, 0, 0 );
+   spotLight.target.position.set( 0, 50, 0);
    spotLight.castShadow = true;
    scene.add( spotLight.target );
+   scene.add( spotLight );
    spotLight.shadow.mapSize.width = 512; 
    spotLight.shadow.mapSize.height = 512; 
    spotLight.shadow.camera.near = 0.5;
-   spotLight.shadow.camera.far = 1000;
-   spotLight.position.set(6, 80, 0);
+   spotLight.shadow.camera.far = 15000;
+   spotLight.position.set(0, 50, 100);
    scene.add(spotLight);
    lightHelper2 = new THREE.PointLightHelper(spotLight);
    scene.add(spotLight, lightHelper2);
-
-
 }
+
 // floor options
 function loadFloor(){
    let textureFloor = new THREE.TextureLoader().load( 'assets/textures/space.png' );
@@ -283,11 +280,13 @@ function loadFloor(){
    meshFloor.position.set(0, 0, 0);
    scene.add(meshFloor);
 }
+
 // camera options
 function loadCamera(){
    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 10000 );
    camera.position.set(0, 200, 100);
 }
+
 // renderer options
 function loadRenderer(){
    renderer = new THREE.WebGLRenderer();
